@@ -22,6 +22,7 @@ def login():
 	# print(d.user_state_dir)
 
 	email = None
+	password = None
 
 	config = ConfigParser()
 	configpath = d.user_config_dir + '/config.ini'
@@ -29,8 +30,10 @@ def login():
 		with open(configpath, 'r') as configfile:
 			config.read(configpath)
 			email = config.sections()[0] if config.sections() else None
-			if config.get(email, None):
+			try:
 				password = config[email].get('password', None)
+			except:
+				pass
 	else:
 		Path(d.user_config_dir).mkdir(parents=True, exist_ok=True)
 		Path(configpath).touch()

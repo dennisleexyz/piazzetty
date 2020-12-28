@@ -1,0 +1,17 @@
+graph TD
+	email([In the config, is there a section header with a valid email address?])
+		email--Yes-->cookie
+		email--No-->input_email-->cookie
+			input_email[Enter email address.]
+	cookie{{Is there a valid cookie file in our cache folder whose name matches that email?}}
+		cookie--Yes-->success
+	cookie--No-->passwd
+		passwd[In the config, under that email address, is there a valid password?]
+			passwd--Yes-->success
+			passwd--No-->input_passwd
+				input_passwd[Enter password.]
+					input_passwd-->chk_passwd
+						chk_passwd[Is the password valid?]
+						chk_passwd--Yes-->success
+						chk_passwd--No-->input_passwd
+	success([We have logged in successfully!])

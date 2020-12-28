@@ -15,4 +15,5 @@ Bugs
 - Only one account supported.
 - Login can only be changed by manually editing the `config.ini` or deleting it
   and rerunning the program to input new credentials.
-- Email, password, and cookie are saved as plain text in `config.ini`
+- Email and password are saved as plain text in `config.ini`.
+- Cookie is saved as plain text.
